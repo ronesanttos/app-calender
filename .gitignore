@@ -1,0 +1,54 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambiente virtual (caso esteja dentro do projeto)
+env/
+venv/
+.venv/
+ENV/
+
+# Configurações locais
+*.env
+.env.*
+.env
+
+# Banco de dados SQLite
+db.sqlite3
+*.sqlite3
+*.sqlite3-journal
+
+# Arquivos de log
+*.log
+
+# Arquivos e pastas de mídia (uploads)
+media/
+
+# Arquivos coletados de static
+staticfiles/
+static_root/
+
+# Arquivos de migração temporários
+*.pot
+*.mo
+
+# IDEs / Editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Outros arquivos inúteis
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Cobertura de testes / tox / caches
+.coverage
+htmlcov/
+.tox/
+.cache/
+.pytest_cache/
+.md

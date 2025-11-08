@@ -1,0 +1,125 @@
+/* 🎨 Estilo geral da página */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f3f4f6;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+  font-size: 2rem;
+}
+
+/* 🗓️ Container principal do calendário */
+#calendar {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+#calendar:hover {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* 📅 Cabeçalho do calendário (FullCalendar toolbar) */
+.fc-toolbar {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.fc-toolbar-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* 🧭 Botões do calendário */
+.fc-button {
+  background-color: #2563eb;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.fc-button:hover {
+  background-color: #1d4ed8;
+}
+
+.fc-button-active {
+  background-color: #1d4ed8 !important;
+}
+
+/* 🟩 Evento */
+.fc-event {
+  border: none;
+  background-color: #22c55e;
+  color: white;
+  font-weight: 500;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: transform 0.1s ease;
+}
+
+.fc-event:hover {
+  transform: scale(1.05);
+}
+
+/* 📱 Responsividade */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+
+  #calendar {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .fc-toolbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .fc-toolbar-title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .fc-button {
+    padding: 5px 8px;
+    font-size: 0.9rem;
+  }
+}
+
+/* 📱 Telas muito pequenas (celulares menores) */
+@media (max-width: 480px) {
+  #calendar {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .fc-toolbar-title {
+    font-size: 1rem;
+  }
+
+  .fc-button {
+    font-size: 0.8rem;
+    padding: 4px 6px;
+  }
+}

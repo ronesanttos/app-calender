@@ -1,0 +1,153 @@
+{% extends "global/base.html" %} {% block content %}
+<h1>Calendário de Eventos</h1>
+
+<!-- FullCalendar CSS + JS -->
+<link
+  href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css"
+  rel="stylesheet"
+/>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+<div id="calendar"></div>
+
+<script>
+  // ✅ Função segura para capturar o CSRF token do cookie
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+      const cookies = document.cookie.split(";");
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === name + "=") {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  const csrftoken = getCookie("csrftoken");
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const calendarEl = document.getElementById("calendar");
+
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: "dayGridMonth",
+      locale: "pt-br",
+      selectable: true,
+      headerToolbar: {
+        left: "prev,next today",
+        center: "title",
+        right: "dayGridMonth,timeGridWeek,listMonth",
+      },
+      buttonText: {
+        today: "Hoje",
+        month: "Mês",
+        week: "Semana",
+        list: "Agenda",
+      },
+
+      // ✅ Busca os eventos salvos no Django
+      events: '{% url "home:eventos_json" %}',
+
+      // ✅ Quando o usuário clica num dia
+      dateClick: function (info) {
+        const nome = prompt(
+          `Para quem voçê trabalhou hoje [${info.dateStr}]: `
+        );
+        if (nome) {
+          fetch("{% url 'home:eventos_json' %}", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRFToken": csrftoken,
+            },
+            body: JSON.stringify({
+              nome: nome,
+              data_evento: info.dateStr,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.error) {
+                alert("Erro: " + data.error);
+              } else {
+                calendar.addEvent(data); // adiciona o evento visualmente
+              }
+            })
+            .catch((err) => alert("Erro ao salvar evento: " + err));
+        }
+      },
+
+      // ✅ Exibe detalhes ao clicar no evento
+      eventClick: function (info) {
+        alert(
+          "Evento: " +
+            info.event.title +
+            "\nData: " +
+            info.event.start.toLocaleString()
+        );
+      },
+
+      // ✏️ Editar ou 🗑️ deletar evento
+      eventClick: function (info) {
+        const acao = prompt(
+          `Evento: ${info.event.title}\n\nDigite uma Ação: \n[1] Editar\n[2] Deletar\n\nOu pressione Cancelar para sair.`
+        );
+
+        if (acao === "1") {
+          // ✏️ Editar evento
+          const novoNome = prompt("Novo nome:", info.event.title);
+          if (novoNome && novoNome !== info.event.title) {
+            fetch("{% url 'home:eventos_json' %}", {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrftoken,
+              },
+              body: JSON.stringify({
+                id: info.event.id,
+                nome: novoNome,
+              }),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                if (!data.error) {
+                  info.event.setProp("title", data.title);
+                } else {
+                  alert("Erro: " + data.error);
+                }
+              })
+              .catch((err) => alert("Erro ao editar evento: " + err));
+          }
+        } else if (acao === "2") {
+          // 🗑️ Deletar evento ao clicar
+          if (confirm(`Deseja excluir o evento "${info.event.title}"?`)) {
+            fetch("{% url 'home:eventos_json' %}", {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrftoken,
+              },
+              body: JSON.stringify({ id: info.event.id }),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                if (data.success) {
+                  info.event.remove(); // remove da tela
+                } else {
+                  alert("Erro: " + (data.error || "Não foi possível excluir"));
+                }
+              })
+              .catch((err) => alert("Erro ao deletar evento: " + err));
+          }
+        }
+      },
+    });
+
+    calendar.render();
+  });
+</script>
+
+{% endblock %}
