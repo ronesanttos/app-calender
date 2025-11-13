@@ -54,21 +54,75 @@ strong {
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 15px;
+  padding: 1rem;
+}
+
+/* ======== FULLCALENDAR CUSTOM ======== */
+.fc-toolbar {
+  background: #2563eb;
+  color: #fff;
+  border-radius: 6px 6px 0 0;
+  padding: 0.5rem 1rem;
+}
+
+.fc-toolbar-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.fc-button {
+  background-color: #3b82f6 !important;
+  border: none !important;
+  color: white !important;
+  border-radius: 5px !important;
+  padding: 0.4rem 0.7rem !important;
+  margin: 0.4rem !important;
+  transition: background 0.2s ease;
+}
+
+.fc-button:hover {
+  background-color: #1d4ed8 !important;
+}
+
+.fc-daygrid-day {
+  transition: background-color 0.2s ease;
+}
+
+.fc-daygrid-day:hover {
+  background-color: #eff6ff;
+}
+
+.fc-event {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.fc-event:hover {
+  background-color: #15803d;
 }
 
 /* ======== RESPONSIVIDADE ======== */
 @media (max-width: 768px) {
   h1 {
+    font-size: 1.2rem;
+  }
+  .btn-action{
+    flex-wrap: wrap;
+  }
+  .btn-action  a{
     font-size: 1.5rem;
+    padding-left: 5px;
   }
   #calendar {
-    width: 95%;
-    padding: 10px;
+    width: 100%;
+    padding: 0.5rem;
   }
-  div > a,
-  div > form > button {
-    padding: 8px 12px;
-    font-size: 0.85rem;
+  .fc-toolbar-title {
+    font-size: 1.1rem;
   }
 }

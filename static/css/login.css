@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 4rem;
 }
 /* ======== CONTAINER ======== */
 #login-container {
@@ -68,12 +69,17 @@
 
 .login p{
     font-size: 18px;
+    padding-top: 1rem;
 }
 
 /* ======== RESPONSIVIDADE ======== */
 @media (max-width: 480px) {
   #login-container {
     padding: 25px;
+  }
+
+  .login p {
+    font-size: 16px;
   }
 
   #login-container h1 {
