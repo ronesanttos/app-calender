@@ -1,0 +1,90 @@
+
+/* ======== CONTAINER ======== */
+h2 {
+  color: #2b3a67;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+.logout button{
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid transparent;
+  width: 150px;
+  border-radius: 5px;
+}
+
+.logout button:hover {
+  background-color: rgb(238, 104, 104);
+  border: 1px solid rgb(212, 3, 3);
+}
+
+.update_user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form#update-form {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+}
+
+/* ======== CAMPOS DO FORM ======== */
+form#update-form input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+form#update-form input:focus {
+  border-color: #4b5c9a;
+  box-shadow: 0 0 4px rgba(75, 92, 154, 0.3);
+  outline: none;
+}
+
+/* ======== BOTÃO ======== */
+form#update-form button {
+  width: 100%;
+  background-color: #2b3a67;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form#update-form button:hover {
+  background-color: #4b5c9a;
+}
+
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 480px) {
+  form#update-form {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+}

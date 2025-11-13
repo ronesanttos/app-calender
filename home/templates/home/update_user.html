@@ -1,0 +1,52 @@
+{% extends "global/base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/update_user.css' %}" />
+<h2>Atualizar Usuário</h2>
+
+
+<div class="update_user">
+  <form id="update-form">
+    <input
+      type="text"
+      name="nome"
+      value="{{ user.nome }}"
+      placeholder="Nome"
+    /><br />
+    <input
+      type="email"
+      name="email"
+      value="{{ user.email }}"
+      placeholder="Email"
+    /><br />
+    <input
+      type="password"
+      name="password"
+      placeholder="Nova senha (opcional)"
+    /><br />
+    <button type="submit">Salvar alterações</button>
+  </form>
+</div>
+<div class="logout">
+  <form action="{% url "home:logout" %}" method="GET">
+    <button type="submit">Click para SAIR da conta</button>
+  </form>
+</div>
+<script>
+  document
+    .querySelector("#update-form")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const data = Object.fromEntries(new FormData(e.target).entries());
+
+      const res = await fetch("/update_user/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const json = await res.json();
+      alert(json.message || json.error);
+      if (json.redirect) window.location.href = json.redirect;
+    });
+</script>
+{% endblock %}

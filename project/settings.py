@@ -5,7 +5,7 @@ from dotenv import load_dotenv #type:ignore
 from urllib.parse import urlparse, parse_qsl
 load_dotenv() 
 
-connect = connect(host=os.getenv("HOST"))
+connect(host=os.getenv("HOST"))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

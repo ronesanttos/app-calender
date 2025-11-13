@@ -1,0 +1,73 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* ======== TÍTULO ======== */
+h1 {
+  color: #2b3a67;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* ======== FORM ======== */
+form#register-form {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+}
+
+/* ======== INPUTS ======== */
+form#register-form input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+form#register-form input:focus {
+  border-color: #4b5c9a;
+  box-shadow: 0 0 4px rgba(75, 92, 154, 0.3);
+  outline: none;
+}
+
+/* ======== BOTÃO ======== */
+form#register-form button {
+  width: 100%;
+  background-color: #2b3a67;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+form#register-form button:hover {
+  background-color: #4b5c9a;
+  transform: scale(1.02);
+}
+
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 480px) {
+  form#register-form {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+}
+
+.register p{
+    font-size: 18px;
+}

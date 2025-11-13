@@ -1,0 +1,55 @@
+{% extends "global/base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+<div class="register">
+  <h1>Registrar Usuário</h1>
+
+  <form id="register-form">
+    <input type="text" name="nome" placeholder="Nome" required /><br />
+    <input type="email" name="email" placeholder="Email" required /><br />
+    <input type="password" name="password" placeholder="Senha" required /><br />
+    <input
+      type="password"
+      name="confirm_password"
+      placeholder="Confirmar Senha"
+      required
+    /><br />
+
+    <button type="submit">Registrar</button>
+  </form>
+
+   <p> Já tenho uma conta, <a href="{% url "home:login" %}"> Entrar</a> </p>
+</div>
+<script>
+  document
+    .querySelector("#register-form")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const data = Object.fromEntries(new FormData(e.target).entries());
+
+      try {
+        const res = await fetch("/register/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          alert("Usuário registrado com sucesso!");
+          // ✅ redireciona para a página de login
+          window.location.href = "/login/";
+        } else {
+          alert(result.error || "Erro ao registrar usuário.");
+          console.error(result);
+        }
+      } catch (err) {
+        console.error("Erro:", err);
+        alert("Ocorreu um erro ao registrar. Tente novamente.");
+      }
+    });
+</script>
+
+{% endblock %}

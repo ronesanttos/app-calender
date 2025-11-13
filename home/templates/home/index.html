@@ -1,5 +1,7 @@
-{% extends "global/base.html" %}{% load static %} {% block content %}
-<h1>Calendário de Eventos</h1>
+{% extends "global/base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 <!-- FullCalendar CSS + JS -->
 <link
@@ -8,7 +10,12 @@
 />
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
-<div id="calendar"  data-url-eventos="{% url 'home:eventos_json' %}"></div>
+<div class="btn-action">
+  <h1>Bem vindo, <strong>{{user.nome}}</strong>! Gostaria de editar seu </h1>
+  <a href="{% url "home:update_user" %}"> Perfil</a>
+</div>
+
+<div id="calendar" data-url-eventos="{% url 'home:eventos_json' %}"></div>
 
 <script src="{% static "js/calender.js" %}" defer></script>
 
