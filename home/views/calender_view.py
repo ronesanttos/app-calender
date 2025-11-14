@@ -57,13 +57,22 @@ def eventos_json(request):
     if request.method == 'GET':
         eventos = Evento.objects(user=user)
         data = []
-        for e in eventos:
+        
+        colors = "#3498db"
+        for i, e in  enumerate(eventos):
             if e.data_evento:
+                cor_usada = colors[i % len(colors)]
+                
+                # Se o nome do evento for "pago", muda para vermelho
+                if  "pago" in e.nome.lower():
+                    cor_usada = "#e11d48"
+                
                 data.append({
                     "id": str(e.id),
                     "title": e.nome,
                     "start": e.data_evento.isoformat() if e.data_evento else None,
                     "allDay": True,
+                    "color": cor_usada,
                 })
         return JsonResponse(data, safe=False)
 
