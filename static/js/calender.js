@@ -25,8 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: "dayGridMonth",
     locale: "pt-br",
-    height:"auto",
-    contentHeight: "auto",
     expandRows: true,
     selectable: true,
     headerToolbar: {

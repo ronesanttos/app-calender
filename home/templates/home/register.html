@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="{% static 'css/register.css' %}">
 
 <div class="register">
+  <div id="register-container" data-url-register="{% url "home:register" %}">
   <h1>Registrar Usuário</h1>
 
   <form id="register-form">
@@ -17,39 +18,9 @@
 
     <button type="submit">Registrar</button>
   </form>
-
+  </div>
    <p> Já tenho uma conta, <a href="{% url "home:login" %}"> Entrar</a> </p>
 </div>
-<script>
-  document
-    .querySelector("#register-form")
-    .addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const data = Object.fromEntries(new FormData(e.target).entries());
-
-      try {
-        const res = await fetch("/register/", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
-
-        const result = await res.json();
-
-        if (res.ok) {
-          alert("Usuário registrado com sucesso!");
-          // ✅ redireciona para a página de login
-          window.location.href = "/login/";
-        } else {
-          alert(result.error || "Erro ao registrar usuário.");
-          console.error(result);
-        }
-      } catch (err) {
-        console.error("Erro:", err);
-        alert("Ocorreu um erro ao registrar. Tente novamente.");
-      }
-    });
-</script>
+<script src="{% static 'js/register.js' %}" defer></script>
 
 {% endblock %}

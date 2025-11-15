@@ -1,9 +1,8 @@
 {% extends "global/base.html" %} {% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'css/update_user.css' %}" />
 <h2>Atualizar Usuário</h2>
-
-
 <div class="update_user">
+  <div id="update-container" data-url-update="{% url "home:update_user" %}">
   <form id="update-form">
     <input
       type="text"
@@ -25,28 +24,12 @@
     <button type="submit">Salvar alterações</button>
   </form>
 </div>
+</div>
+
 <div class="logout">
   <form action="{% url "home:logout" %}" method="GET">
     <button type="submit">Click para SAIR da conta</button>
   </form>
 </div>
-<script>
-  document
-    .querySelector("#update-form")
-    .addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const data = Object.fromEntries(new FormData(e.target).entries());
-
-      const res = await fetch("/update_user/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      const json = await res.json();
-      alert(json.message || json.error);
-      if (json.redirect) window.location.href = json.redirect;
-    });
-</script>
+<script src="{% static 'js/update_user.js' %}" defer></script>
 {% endblock %}
