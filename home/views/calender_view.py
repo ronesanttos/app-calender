@@ -155,3 +155,6 @@ def logout(request):
     response = redirect("home:login")
     response.delete_cookie("jwt")
     return response
+
+def health(request):
+    return JsonResponse({"status": "ok"})

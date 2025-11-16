@@ -1,5 +1,10 @@
 {% extends "global/base.html" %} {% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'css/update_user.css' %}" />
+
+<div class="voltar">
+<a href="{% url "home:index" %}">Voltar</a>
+</div> 
+
 <h2>Atualizar Usuário</h2>
 <div class="update_user">
   <div id="update-container" data-url-update="{% url "home:update_user" %}">

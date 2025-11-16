@@ -15,7 +15,7 @@ SECRET_KEY = os.getenv('SECRET_KEY','unsafe-secret-key-for-dev-only')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['app-calender.onrender.com']
 
 # Application definition
 
