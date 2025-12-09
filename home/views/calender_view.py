@@ -9,7 +9,7 @@ from django.utils.dateparse import parse_date
 
 
 def calendario(request):
-    token = request.COOKIES.get("jwt")
+    token = request.COOKIES.get("jwt") or request.GET.get("token") # se der erro apagar or request.GET.get("token")
 
     if not token:
         return redirect("home:login")  # se não tiver token, vai pro login
