@@ -15,6 +15,26 @@ Sistema web de calendário/agenda com Django, permitindo criar, editar e visuali
 
 ---
 
+## 📆 Interface de Calendário
+
+ O projeto utiliza FullCalendar.js para exibição dos eventos, permitindo:
+
+ -Visualização mensal, semanal e diária
+ -Interação dinâmica com os agendamentos
+ -Facilidade na criação e edição de eventos
+
+---
+
+## 🔐 Autenticação (JWT)
+
+ A autenticação é baseada em JSON Web Token (JWT), garantindo:
+
+- Segurança nas requisições
+- Controle de acesso a rotas protegidas
+- Facilidade de integração com front-ends externos ou mobile
+
+---
+
 ## 🛠️ Tecnologias Utilizadas
 
 ### Back-end
@@ -32,6 +52,24 @@ Sistema web de calendário/agenda com Django, permitindo criar, editar e visuali
 
 ---
 
+
+
+## ⚙️ Como Rodar o Projeto Localmente
+
+1. `git clone ...`
+2. `cd app-calender`
+3. `python -m venv venv`
+4. `pip install -r requirements.txt`
+5. `python manage.py migrate`
+6. `python manage.py runserver`
+
+## ⚙️Configurar variáveis de ambiente (JWT)
+- Crie um arquivo .env (ou configure no sistema):
+
+- SECRET_KEY=suachavesecreta
+- JWT_SECRET_KEY=sua_chave_jwt
+- MONGO_URI=mongodb://localhost:27017/app_calender
+
 ## 📂 Estrutura do Projeto
 app-calender/
 │
@@ -47,13 +85,3 @@ app-calender/
 ├── base_templates/
 ├── static/
 └── db.sqlite3
-
-## ⚙️ Como Rodar o Projeto Localmente
-
-1. `git clone ...`
-2. `cd app-calender`
-3. `python -m venv venv`
-4. `pip install -r requirements.txt`
-5. `python manage.py migrate`
-6. `python manage.py runserver`
-7. 
