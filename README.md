@@ -1,5 +1,8 @@
 # 📅 App Calender
 
+🔗 **Demo online:** [Acessar aplicação](https://seusite.com)
+---
+
 Sistema web de calendário/agenda com Django, permitindo criar, editar e visualizar eventos, focado em organização, segurança e boa experiência do usuário.
 
 ---
