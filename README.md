@@ -18,10 +18,10 @@ Sistema web de calendário/agenda com Django, permitindo criar, editar e visuali
 ## 📆 Interface de Calendário
 
  O projeto utiliza FullCalendar.js para exibição dos eventos, permitindo:
-
- -Visualização mensal, semanal e diária
- -Interação dinâmica com os agendamentos
- -Facilidade na criação e edição de eventos
+ 
+- Visualização mensal, semanal e diária
+- Interação dinâmica com os agendamentos
+- Facilidade na criação e edição de eventos
 
 ---
 
@@ -63,7 +63,7 @@ Sistema web de calendário/agenda com Django, permitindo criar, editar e visuali
 5. `python manage.py migrate`
 6. `python manage.py runserver`
 
-## ⚙️Configurar variáveis de ambiente (JWT)
+## ⚙️ Configurar variáveis de ambiente (JWT)
 - Crie um arquivo .env (ou configure no sistema):
 
 - SECRET_KEY=suachavesecreta
